@@ -62,9 +62,16 @@ class _CommitListPageState extends State<CommitListPage> {
           : ListView.builder(
               itemCount: commits.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(commits[index]['commit']['message']),
-                  subtitle: Text(commits[index]['commit']['author']['name']),
+                final commit = commits[index]['commit'];
+                return Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      child: Text(commit['author']['name'][0]),
+                    ),
+                    title: Text(commit['message']),
+                    subtitle: Text('Author: ${commit['author']['name']}'),
+                    trailing: Text(commit['author']['date'].substring(0, 10)),
+                  ),
                 );
               },
             ),
