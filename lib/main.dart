@@ -39,7 +39,7 @@ class _CommitListPageState extends State<CommitListPage> {
 
   Future<void> fetchCommits() async {
     final response = await http.get(
-      Uri.parse('https://api.github.com/repos/Kikegg97/github-commits-viewer/commits'),
+      Uri.parse('https://api.github.com/repos/Kikegg97/test_commits_view/commits?per_page=100'),
     );
 
     if (response.statusCode == 200) {
@@ -56,6 +56,14 @@ class _CommitListPageState extends State<CommitListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Commit History'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              fetchCommits(); // Llama a la función para actualizar los commits
+            },
+          ),
+        ],
       ),
       body: commits.isEmpty
           ? const Center(child: CircularProgressIndicator())
@@ -66,11 +74,11 @@ class _CommitListPageState extends State<CommitListPage> {
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(
-                      child: Text(commit['author']['name'][0]),
+                      child: Text(commit['author']['name'][0]), // Inicial del autor
                     ),
-                    title: Text(commit['message']),
-                    subtitle: Text('Author: ${commit['author']['name']}'),
-                    trailing: Text(commit['author']['date'].substring(0, 10)),
+                    title: Text(commit['message']), // Mensaje del commit
+                    subtitle: Text('Author: ${commit['author']['name']}'), // Autor del commit
+                    trailing: Text(commit['author']['date'].substring(0, 10)), // Fecha del commit
                   ),
                 );
               },
