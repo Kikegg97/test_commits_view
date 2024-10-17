@@ -55,4 +55,9 @@ git add lib/main.dart
 git commit -m "Improved UI to display author initials, commit message, and date"
 git push origin main
 
+Pondremos un boton de refrescar para ver los commits recien agregados
+git add lib/main.dart
+git commit -m "Added refresh button to manually update commits"
+git push origin main
+
 En esta version de la app se usa solamente la API de Github y no se necesita hacer un backend
