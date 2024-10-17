@@ -1,4 +1,4 @@
-## GitHub Commits Viewer
+# GitHub Commits Viewer
 Este proyecto es una aplicación móvil desarrollada en Flutter que permite visualizar el historial de commits de un repositorio público de GitHub. La aplicación utiliza la GitHub API para obtener y mostrar los commits en una lista.
 
 ## Requisitos previos
@@ -11,7 +11,7 @@ VS CODE
 
 ## Instrucciones para ejecutar
 
-# Enlace con GitHub
+### Enlace con GitHub
 1. Primero creamos nuestro proyecto flutter, ya sea con comando flutter create "nombre_del_proyecto" o con >Flutter New Project
 2. Crearemos nuestro repositorio en GitHbu
 3. Ahora procederemos a enlazar nuestro proyecto con el repositorio en Github tomando como raiz la carpeta main y no master
@@ -33,7 +33,7 @@ git rebase --continue
 Luego dentro de este, presionamos Esc y escribimos :wq
 Ahora si estaremos dentro de nuestra carpeta main
 
-# Pasos Front End
+### Pasos Front End (Todo esta en el codigo del archivo main.dart)
 Todo cambio que hagamos registramos nuestros commit
 Agregamos la dependencia HTTP en el archivo pubspec.yaml usando:  dart pub add http
 git add pubspec.yaml
