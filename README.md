@@ -7,6 +7,7 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente insta
 Flutter
 Git
 HTTP
+NESTJS
 VS CODE
 
 ## Instrucciones para ejecutar
@@ -33,7 +34,7 @@ git rebase --continue
 Luego dentro de este, presionamos Esc y escribimos :wq
 Ahora si estaremos dentro de nuestra carpeta main
 
-### Pasos Front End (Todo esta en el codigo del archivo main.dart)
+### Pasos FrontEnd  y BackEnd
 Todo cambio que hagamos registramos nuestros commit
 Agregamos la dependencia HTTP en el archivo pubspec.yaml usando:  dart pub add http
 git add pubspec.yaml
@@ -43,11 +44,6 @@ git push origin main
 Ahora primero haremos una interfaz basica en el main.dart
 git add lib/main.dart
 git commit -m "Created basic Flutter UI layout with AppBar"
-git push origin main
-
-Ahora modificaremos esta ventana para llamar a la API de Github y hacemos un commit
-git add lib/main.dart
-git commit -m "Added functionality to fetch and display commit history from GitHub API"
 git push origin main
 
 Una vez probado y que funciones, mejoramos la interfaz y efectuamos el commit
@@ -60,4 +56,14 @@ git add lib/main.dart
 git commit -m "Added refresh button to manually update commits"
 git push origin main
 
-En esta version de la app se usa solamente la API de Github y no se necesita hacer un backend
+Crea un nuevo proyecto con el siguiente comando: nest new github-commits-backend
+Crear un servicio para obtener los commits de GitHub: 
+nest generate service github
+nest generate controller github
+
+Controlador para servir los commits donde haremos enlace el backend con la API de github
+En src/github/commits.controller.ts, añade un endpoint que llame al servicio GithubService
+
+Inicializamos este controlador desde app.module.ts
+
+Y posteriormente llamaremos este controlador desde nuestro main, donde ajustaremos segun la direccion IP local o la direccion IP del emulador que es 10.0.2.2. Hay que proabr con cual sirve en nuestra solucion.
